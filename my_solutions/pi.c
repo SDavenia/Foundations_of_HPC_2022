@@ -7,8 +7,8 @@ int main(){
   int n;
   int m = 0;
 
-  printf("Insert the number of desired iterations");
-  scanf("%d", n);
+  printf("Insert the number of desired iterations ");
+  scanf("%d", &n);
 
   for(int i = 0; i<n; i++){
     x = (double)rand()/(double)RAND_MAX;
