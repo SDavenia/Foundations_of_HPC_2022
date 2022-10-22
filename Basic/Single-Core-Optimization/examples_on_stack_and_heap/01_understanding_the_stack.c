@@ -55,6 +55,9 @@ double this_double_goes_in_initialized_global_data   = 3.1415926535897932;
 int    function1 ( int, int, char *);
 double function2 ( int, int, char *, double, double, double *, double );
   
+/* */
+
+
 int main ( int argc, char **argv )
 {
 
@@ -67,7 +70,8 @@ int main ( int argc, char **argv )
 	 "My RBP points to %p "
 	 "My RSP points to %p "
 	 " ( stack size: %zd )\n",
-	 __FUNCTION__, (void*)myRBP, (void*)myRSP, (void*)myRBP - (void*)myRSP );
+	 __FUNCTION__, (void*)myRBP, (void*)myRSP, (void*)myRBP - (void*)myRSP ); 
+	 //void* means no type, so pointer arithmetic happens by byte
 
   printf("\targc resides at %p [ %zd bytes-offset from RSP]\n",
 	 &argc,
@@ -98,11 +102,11 @@ int main ( int argc, char **argv )
   printf("\tadd_4bytes_to_stack resides at %p [ %zd bytes-offset from RSP]\n"
 	 "\tadd_8bytes_to_stack resides at %p [ %zd bytes-offset from RSP]\n",
 	 &add_4bytes_to_stack,
-	 (void*)&add_4bytes_to_stack - (void*)myRSP,
+	 (void*)&add_4bytes_to_stack - (void*)myRSP, // distance between these two variables
 	 &add_8bytes_to_stack,
 	 (void*)&add_8bytes_to_stack - (void*)myRSP );
   
-  
+  // Call function 1 with args 1,2 and the string hello_world, NOT IN THE STACK.
   function1( 1, 2, this_string_goes_in_initialized_global_data );
   
   return 0;
