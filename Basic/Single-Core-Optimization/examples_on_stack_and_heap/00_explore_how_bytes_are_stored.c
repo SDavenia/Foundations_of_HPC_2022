@@ -28,7 +28,7 @@ int main( void )
       //
       char *byte = (char*)&i;
       for( int k = 0; k < size; k++ )
-	printf("\t%p : %d\n", byte+k, *(byte+k) );
+          printf("\t%p : %d\n", byte+k, *(byte+k) );
 
       // convince yourself that the previous for loop could have been
       // written as follows:
@@ -59,6 +59,8 @@ int main( void )
       //
       i <<= 8;
 
+      //128 is                10000000
+      //256 * 128 is 10000000 00000000
       // we are doing this because we want that only a single bit is set per each byte
       // among the i's bytes.
       // we started from a value of 1, i.e. only the first bit of the first byte of i was
