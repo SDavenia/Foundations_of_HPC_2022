@@ -39,7 +39,7 @@
 
 int main( int argc, char **argv )
 {
-  
+  // If the number of arguments passed is larger than 1 count them, else use 10 as default.
   int  i = (argc > 1 ? atoi(*(argv+1)) : DEFAULT );
   int  nthreads;
   int *array;
@@ -48,8 +48,10 @@ int main( int argc, char **argv )
  #pragma omp master
   nthreads = omp_get_num_threads();
 
+  //allocate space for an array of integers of size nthreads
   array = (int*)calloc( nthreads, sizeof(int) );
   
+  // Now we have both i and array firstprivate
  #pragma omp parallel firstprivate( i, array )
   {
     int me = omp_get_thread_num();
@@ -65,6 +67,8 @@ int main( int argc, char **argv )
     
     array[me] = i + me;   // a perfectly valid reference
     
+    // This does not make our code fail, cause the variable array still exists in the serial region
+    //  and later we will be able to access it.
     array = NULL;         // we screw up.. but only in
                           // this scope because this
                           // array is _not_ the same
