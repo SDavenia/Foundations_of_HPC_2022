@@ -36,7 +36,8 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/syscall.h>
-#include <omp.h>
+#include </usr/local/Cellar/libomp/15.0.3/include/omp.h>
+//#include <omp.h>
 
 
 int main( int argc, char **argv )
