@@ -109,21 +109,21 @@ int main(int argc, char **argv)
   for ( r = 0; r < nIter; r++ )
     {
 
-      double tstart = TCPU_TIME;
-      
+    double tstart = TCPU_TIME;
+    
       for ( p = 0; p < Np; p++ )
-	for ( i = 0; i < Ng; i++ )
-	  for ( j = 0; j < Ng; j++ )
-	    for ( k = 0; k < Ng; k++ )
-	      {
-		dist = sqrt( pow(x[p] - (double)i/Ng + half_size, 2) +
-			     pow(y[p] - (double)j/Ng + half_size, 2) +
-			     pow(z[p]  - (double)k/Ng + half_size, 2) );
-		if(dist < Rmax)
-		  dummy += dist;
-	      }
-      
-      ctime += TCPU_TIME - tstart;
+        for ( i = 0; i < Ng; i++ )
+          for ( j = 0; j < Ng; j++ )
+            for ( k = 0; k < Ng; k++ )
+              {
+              dist = sqrt( pow(x[p] - (double)i/Ng + half_size, 2) +
+                    pow(y[p] - (double)j/Ng + half_size, 2) +
+                    pow(z[p]  - (double)k/Ng + half_size, 2) );
+              if(dist < Rmax)
+                dummy += dist;
+              }
+              
+    ctime += TCPU_TIME - tstart;
     }
   
   printf("\t%g sec [%g]\n", ctime / nIter, dummy / nIter);

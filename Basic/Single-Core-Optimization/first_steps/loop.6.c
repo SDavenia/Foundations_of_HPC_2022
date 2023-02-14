@@ -103,18 +103,19 @@ int main(int argc, char **argv)
 
   double *jks = (double*)calloc(Ng, sizeof(double));
 
+  // Here we pre-compute this quantity for all values.
   for( int i = 0; i < Ng; i++)
     jks[i] = (double)i * Ng_inv + half_size;
     
   int Np3 = Np * 3;
 
 
-  for ( int r = 0; r < nIter; r++ )
+  for( int r = 0; r < nIter; r++ )
     {
 		
       double tstart = TCPU_TIME;
       
-      for( int p = 0; p < Np3; p += 3 )
+  for( int p = 0; p < Np3; p += 3 )
 	for( int i = 0; i < Ng; i++)
 	  {
 	    double register dx2 = parts[p] - jks[i]; dx2 = dx2*dx2;

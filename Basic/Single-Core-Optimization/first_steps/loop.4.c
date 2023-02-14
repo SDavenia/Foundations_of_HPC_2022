@@ -111,30 +111,29 @@ int main(int argc, char **argv)
 
       double tstart = TCPU_TIME;
       
-      for ( int p = 0; p < Np; p++ )
-	for ( int i = 0; i < Ng; i++ )
-	  {
-	    double dx2 = x[p] - (double)i * Ng_inv + half_size; dx2 = dx2*dx2;
+    for ( int p = 0; p < Np; p++ )
+	  for ( int i = 0; i < Ng; i++ )
+	    {
+	      double dx2 = x[p] - (double)i * Ng_inv + half_size; dx2 = dx2*dx2;
 	    
-	    for ( int j = 0; j < Ng; j++ )
-	      {
-		double dy = y[p] - (double)j * Ng_inv + half_size;
-		double dist2_xy = dx2 + dy*dy;
+	      for ( int j = 0; j < Ng; j++ )
+	        {
+		      double dy = y[p] - (double)j * Ng_inv + half_size;
+		      double dist2_xy = dx2 + dy*dy;
 		
-		for ( int k = 0; k < Ng; k++ )
-		  {
-		    double dz;
-		    dz = z[p] - (double)k * Ng_inv + half_size;
-		    
-		    dist = dist2_xy + dz*dz;
-		    
-		    if(dist < Rmax2)
-		      dummy += sqrt(dist);
-		  }
-	      }
-	  }
-	    
-      ctime += TCPU_TIME - tstart;
+          for ( int k = 0; k < Ng; k++ )
+            {
+              double dz;
+              dz = z[p] - (double)k * Ng_inv + half_size;
+              
+              dist = dist2_xy + dz*dz;
+              
+              if(dist < Rmax2)
+                dummy += sqrt(dist);
+            }
+	        } 
+	    }
+	    ctime += TCPU_TIME - tstart;
     }
   
   printf("\t%g sec [%g]\n", ctime/nIter, dummy/nIter);
