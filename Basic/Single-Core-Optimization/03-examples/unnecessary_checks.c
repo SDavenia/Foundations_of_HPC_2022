@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 
-char * find_char_in_string( char *string, char c ){
+/*
+Not really that useful
+*/
+
+
+char* find_char_in_string( char *string, char c ){
     int i=0;
     int len = strlen(string);
     while(i<len)
@@ -10,7 +15,7 @@ char * find_char_in_string( char *string, char c ){
        else 
          i++;
 
-    if( i < strlen(string) )
+    if( i < strlen(string) ) // strlen(string) is called at every iteration, as we might alter the string inside the body of the function.
        return &string[i];
     else
        return NULL;
@@ -32,6 +37,4 @@ int main(){
     char *position;
     position = find_char_in_string(string1, 'p');
     printf("%s\n", position);
-
-
 }

@@ -4,6 +4,7 @@ for f in loop.?.c;
 do
     version=$( echo $f | cut -d'.' -f2)
     echo $f
+    echo $version
 
     echo -e "\tgcc"
     gcc -std=c11 -o gcc/loop.${version} loop.${version}.c -lm

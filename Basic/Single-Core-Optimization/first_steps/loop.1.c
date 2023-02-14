@@ -42,6 +42,11 @@
  * The grid is actually not allocated.
  */
 
+ /*
+ To run this code you need to pass two numerical values indicating the number of particles and the 
+  number of grid points
+ */
+
 
 // look at the lecture about timing for motivations about the following macro
 #define TCPU_TIME (clock_gettime( CLOCK_PROCESS_CPUTIME_ID, &ts ), (double)ts.tv_sec +	\
@@ -63,7 +68,7 @@ int main(int argc, char **argv)
 
   // get the number of particles to use
   Np = atoi( *(argv + 1) );
-    // get the number of grid points
+  // get the number of grid points
   Ng = atoi( *(argv + 2) );
 
   if ( argc > 3 )
@@ -74,8 +79,8 @@ int main(int argc, char **argv)
 
   // allocate contiguous memory for particles coordinates
   x    = (double*)calloc(Np * 4, sizeof(double));
-  y    = x + Np;
-  z    = y + Np;
+  y    = x + Np; // Using pointer arithmetic we allocate the successive memory addresses for the y coordinates
+  z    = y + Np; // Using pointer arithmetic we allocate the successive memory addresses for the z coordinates
 
   // this quantity will be used to calculate the grid
   // center starting from the (corner) grid point

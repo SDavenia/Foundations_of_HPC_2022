@@ -26,7 +26,7 @@ int main( void )
 
       // now we access each byte of i
       //
-      char *byte = (char*)&i;
+      char *byte = (char*)&i; // We need to typecast it otherwise we have that it is an unsigned int.
       for( int k = 0; k < size; k++ )
           printf("\t%p : %d\n", byte+k, *(byte+k) );
 
