@@ -1,0 +1,18 @@
+How to use the following folder:
+ 1. Create a directory for each compiler (need to ensure they are loaded, if you use compile3 it always works as we always have gcc compiler, need to find icc and pgi compilers on ORFEO).
+ 2. Execute bash script compile3 which will create the executables in the corresponding compiler file
+ 3. Execute bash script run3 which will run all the executables and create a timings file (containing the timings) in each of the compiler folders (all the opeartions are performed multiple times to get a more accurate timing estimate).
+ 4. Execute collect3 to summarize all the times in a table
+
+
+
+Basically we compute the distance of each point from the center of all grids.
+What the files actually do:
+ 0. Simple code to perform the operations.
+ 1. We avoid the sqrt by working with dist^2
+ 2. We avoid power and instead use dx*dx
+ 3. We avoid floating point division and instead we pre-compute it and use floating point multiplication (which is faster)
+ 4. We use loop hoisting and avoid operations whenever possible, so for example dx can be computed only once inside the outer i loop.
+ 5. We use register directives,
+ 6-7 We try to ensure the compiler can vectorize. 7 is a failed attempt at that.
+
