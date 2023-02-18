@@ -22,6 +22,10 @@
  */
 
 
+/*
+ - volatile is used to ensure that the loop is not vectorized 
+ - 
+*/
 
 #if defined(__STDC__)
 #  if (__STDC_VERSION__ >= 201112L)    // c11
@@ -86,10 +90,10 @@ int access_the_stack( void )
       double t0 = CPU_TIME;
       
       for ( int i = 0; i < N_DEFAULT; i++ )
-	on_stack[ i ] = (float)i;
+	      on_stack[ i ] = (float)i;
       float volatile access = 0;
       for ( int i = 0; i < N_DEFAULT; i++ )
-	access += on_stack[ i ] + 1.0;
+	      access += on_stack[ i ] + 1.0;
 
       double timediff = CPU_TIME - t0;
       time    += timediff;
@@ -120,10 +124,10 @@ int access_the_stack_dp( void )
       double t0 = CPU_TIME;
 
       for ( ptr = on_stack ; ++ptr < ptr_end; )
-	*ptr = (float)(ptr-on_stack);
+	      *ptr = (float)(ptr-on_stack);
       float volatile access = 0;      
       for ( ptr = on_stack; ++ptr < ptr_end; )
-	access += *ptr + 1.0;
+	      access += *ptr + 1.0;
 
       double timediff = CPU_TIME - t0;
       time    += timediff;
@@ -152,10 +156,10 @@ int access_the_heap( void )
       double t0 = CPU_TIME;
       
       for ( int i = 0; i < N_DEFAULT; i++ )
-	on_heap[ i ] = (float)i;
+	      on_heap[ i ] = (float)i;
       float volatile access = 0;
       for ( int i = 0; i < N_DEFAULT; i++ )
-	access += on_heap[ i ] + 1.0;
+	      access += on_heap[ i ] + 1.0;
 
       double timediff = CPU_TIME - t0;
       time    += timediff;
