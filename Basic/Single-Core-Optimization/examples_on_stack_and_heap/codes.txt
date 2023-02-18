@@ -1,0 +1,7 @@
+If running on Mac remember to replace clang with gnu gcc compiler (otherwise stack registers seem to be different and examples won't work).
+
+00
+Nothing interesting, just shows how numbers are stored
+
+01
+
