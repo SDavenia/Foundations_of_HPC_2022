@@ -49,7 +49,7 @@
 #include "mypapi.h"		                   /* include the needed header */
 
 
-                                                   /* we use the high-level PAPI
+                  /* we use the high-level PAPI
 						      interface here; specifically,
 						      we are only interested in IPC
 						      counts. Then there is no need
@@ -112,9 +112,9 @@ int main(int argc, char **argv)
   int     N;                                       /* N is the array size, in number of elements */
   struct timespec ts;                              /* this is used inside CPU_TIME               */
 
-						   /* define accumulators for PAPI counters */
+  /* define accumulators for PAPI counters */
 
-						   /* check the arguments */
+  /* check the arguments */
   if(argc > 1)
     N = atoi(*(argv+1));
   else
