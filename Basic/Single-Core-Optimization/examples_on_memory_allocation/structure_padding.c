@@ -121,7 +121,7 @@ void main(int argc, char **argv)
 	     "char_field2 at ",  (void*)&arrayAp[0].char_field2  - (void*)&arrayAp[0]);
       
       printf("\n"
-	     "arrayApp begins at %p, size of STRUCT_Ap is %zd, memory displacement among array elements is %zd\n",
+	     "arrayApp begins at %p, size of STRUCT_App is %zd, memory displacement among array elements is %zd\n",
 	     arrayApp, sizeof(STRUCT_App), (void*)&arrayApp[1] - (void*)&arrayApp[0]);
       printf("\t%18s%3zd\n\t%18s%3zd\n\t%18s%3zd\n\t%18s%3zd\n\n",
 	     "char_field at ",   (void*)&arrayApp[0].char_field   - (void*)&arrayApp[0],
