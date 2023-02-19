@@ -30,7 +30,10 @@
  *                                                                   *
  *                                                                   *
  * ----------------------------------------------------------------- */
-
+/*
+When the memory addresses are provided they are not in the stack sense, he gives them in order that makes sense
+So saying that argc is 12 bytes from RSP means that it starts let's say at 12 addresses above.
+*/
 
 #if defined(__STDC__)
 #  if (__STDC_VERSION__ >= 201112L)    // c11
@@ -159,7 +162,6 @@ int function1( int iarg1, int iarg2, char *sarg3, data_t data )
 	 &data.field_of_doubles[0],
 	 &data.field_of_doubles[1],
 	 &data.field_of_doubles[11] );
-	 
   
 
   return 0;

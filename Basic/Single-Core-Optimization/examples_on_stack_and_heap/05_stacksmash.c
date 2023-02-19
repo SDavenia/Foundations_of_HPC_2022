@@ -75,7 +75,7 @@ int main( void )
   // the current stack frame, so they are
   // negative.
   //
-  printf("RSP     : %p\n"          // the top of the stak (remind: it is the lowest address)
+  printf("RSP     : %p\n"    // the top of the stak (remind: it is the lowest address)
 	 "RBP     : %p\n\n"        // the base of the stack
 	 "RBP-RSP : %ld\n"         // the size of the stack
 	 "array[0]: %ld\n",	   // the position of the first element of array
@@ -115,7 +115,7 @@ int main( void )
     //
     {
       if ( ii == 0 )
-	printf("ii      : %ld\n", (void*)&ii - (void*)myRBP);   // the position of the for cycle counter
+	      printf("ii      : %ld\n", (void*)&ii - (void*)myRBP);   // the position of the for cycle counter
       
       printf("accessing %d-th element: %ld\n", ii, (void*)&array[ii] - (void*)myRBP);
       array[ ii ] = ii;

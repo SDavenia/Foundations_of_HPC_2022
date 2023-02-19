@@ -21,7 +21,13 @@ double this_double_goes_in_initialized_global_data   = 3.1415926535897932;
 int    function1 ( int, int, char *);
 double function2 ( int, int, char *, double, double, double *, double );
   
-/* */
+/* 
+Only done to show the following:
+ - You can access the CPU registers using assembly coding (at the beginning)
+ - argc seems to be residing on the stack, while the command line arguments not (very far from top of the stack)
+ - After the local variables (in the main) the stack does not grow as it stays the same as already known.
+ - Then notice how when function1 and function2 are called the stack RBP and RSP are moved, and the stack size is changed accordingly.
+*/
 
 
 int main ( int argc, char **argv )
@@ -73,7 +79,7 @@ int main ( int argc, char **argv )
 	 (void*)&add_8bytes_to_stack - (void*)myRSP );
   
   // Call function 1 with args 1,2 and the string hello_world, NOT IN THE STACK.
-  function1( 1, 2, this_string_goes_in_initialized_global_data );
+  function1( 1, 2, this_string_goes_in_initialized_global_data);
   
   return 0;
 }

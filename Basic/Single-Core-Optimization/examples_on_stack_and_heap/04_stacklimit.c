@@ -37,7 +37,8 @@
  *   - func3 does it by dynamic allocating on the stack              *
  *     if the code reached this point, it would cause a violation    *
  *     because there would not be enough memory available            *
- *                                                                   *
+ * Remember that you can check stack limit by executing              *
+ * > ulimit -s                                                       *
  * ----------------------------------------------------------------- */
 
 #if defined(__STDC__)
@@ -76,7 +77,7 @@ void func1(unsigned int S)
   array = (char*)malloc(S * sizeof(char));
 
   for ( int i = 0; i < S; i++ )
-	array[i] = i;
+	  array[i] = i;
 
   free(array);
   
@@ -99,7 +100,8 @@ void func2(unsigned int S)
  * segfault will disappear
  */
 {
-  char array[S];          // try to get S KB on the stack
+  char array[S];          
+        // try to get S KB on the stack
 			  // at this point you will not get any seg fault, yet:
 			  // the top pf the stack will be set up to the maximum
 			  // that, however, leave less space than needed because
@@ -109,7 +111,7 @@ void func2(unsigned int S)
     // you will start to access the array, simply by offsetting the
     // start of the array on the stack.
     // seg fault will come when you hit the top of the stack
-	array[i] = i;
+	  array[i] = i;
   
   printf("static  allocation of %zd bytes on the stack has been done\n", S * sizeof(char)); fflush(stdout);
   return;

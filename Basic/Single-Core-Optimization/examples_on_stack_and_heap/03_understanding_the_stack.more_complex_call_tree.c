@@ -141,7 +141,7 @@ int function_2 ( char * sentence )
   printf ( "function_2() : %s", sentence_ptr );
 
   // now calling a function passing the address of a
-  // local variable does not rise any compiler's concern
+  // local variable does not rise any compiler's concern (because stack still exists)
   function_3 ( local_sentence );
 
   return 0;

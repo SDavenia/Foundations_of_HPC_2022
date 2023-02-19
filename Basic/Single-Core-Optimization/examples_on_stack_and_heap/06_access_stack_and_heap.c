@@ -24,7 +24,7 @@
 
 /*
  - volatile is used to ensure that the loop is not vectorized 
- - 
+ - not sure what the meaning of 3 is
 */
 
 #if defined(__STDC__)
@@ -108,7 +108,7 @@ int access_the_stack( void )
   return 0;
 }
 
-
+// Allocating on the stack using a pointer.
 int access_the_stack_dp( void )
 {
   float  on_stack[N_DEFAULT];
@@ -194,10 +194,10 @@ int access_the_heap_dp ( void )
       double t0 = CPU_TIME;
 
       for ( ; ++entry < stop;)
-	*entry = (float)(entry - on_heap);
+	      *entry = (float)(entry - on_heap);
       float volatile access = 0;
       for ( entry = on_heap; ++entry < stop;  )
-	access += *entry + 1.0;
+	      access += *entry + 1.0;
       
       double timediff = CPU_TIME - t0;
       time    += timediff;
