@@ -1,0 +1,1 @@
+This file contains example on how to use properly hot and cold fields.
