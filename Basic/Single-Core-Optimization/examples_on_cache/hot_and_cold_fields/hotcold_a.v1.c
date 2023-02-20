@@ -43,8 +43,6 @@ typedef struct node_t {
 } node;
 
 
-
-
 #define N_default 10000
 
 int main( int argc, char **argv )
@@ -99,7 +97,7 @@ int main( int argc, char **argv )
       node *target = first;
 
       while ( target->key != key )
-	target = target->next;
+	      target = target->next;
       sum += target->key;
     }
 

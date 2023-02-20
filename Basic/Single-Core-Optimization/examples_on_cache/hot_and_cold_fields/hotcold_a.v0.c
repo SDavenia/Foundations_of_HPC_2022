@@ -43,8 +43,6 @@ typedef struct node_t {
 } node;
 
 
-
-
 #define N_default 10000
 
 int main( int argc, char **argv )
@@ -75,9 +73,9 @@ int main( int argc, char **argv )
     {
       node *new = (node*)calloc( 1, sizeof(node) );
       if ( last != NULL )
-	last->next = new;
+      	last->next = new;
       else
-	first = new;
+	      first = new;
       new ->key  = drand48();
       keys[nn] = new->key;
       new ->next = NULL;
@@ -93,7 +91,7 @@ int main( int argc, char **argv )
   
   double tstart = CPU_TIME;
   
-  for( int ii = 0; ii < NSHOTS; ii++ )
+  for(int ii = 0; ii < NSHOTS; ii++ )
     {      
       double key = keys[(int)(drand48() * N)];
       node *target = first;
@@ -101,10 +99,10 @@ int main( int argc, char **argv )
       // this implementation is less efficient than
       // that in v1      
       for ( int nn = 0; nn < N; nn++ )
-	if ( target->key == key )
-	  sum += target->key;
-	else
-	  target = target->next;      
+        if ( target->key == key )
+          sum += target->key;
+        else
+          target = target->next;      
     }
 
   double et = CPU_TIME - tstart;

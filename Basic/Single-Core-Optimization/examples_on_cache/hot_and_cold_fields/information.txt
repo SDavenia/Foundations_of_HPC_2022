@@ -1,1 +1,29 @@
 This file contains example on how to use properly hot and cold fields.
+
+You can use `compile` and `run` to compile and run the codes respectively.
+When you are done using them you can remove the executables by using `clean` bash commands.
+
+We are using the linked list example to show the importance of hot and cold fields.
+We have a structure node_t holding:
+ - a key (double)
+ - a large amount of char data
+ - a pointer to the next node in the list
+
+All versions have two different codes to traverse the list, with v0 being less optimal than v1
+The list traversing is improved becuase instead of using a for loop and an if condition inside 
+ we only use a while loop where the condition is checked.
+
+VERSION a
+We define a structure with a big data object in between the key and the pointer to the next node.
+
+VERSION b
+In the code we simply swap the position of data and pointer next in the code, so that data locality is preserved.
+
+VERSION c
+Here we handle the fact that our main issue is having big data in our struct. 
+We define a pointer to data in our struct, so only if needed we will load it.
+We use a pointer to void and then if we want to use the data (which we do not here) we typecast it 
+ to a pointer to data. 
+The advantage of pointers to void is that they can point to any type, the only thing is that when we want
+  to dereference them we need to typecast them to their specific type.
+As such they increase code clarity.
