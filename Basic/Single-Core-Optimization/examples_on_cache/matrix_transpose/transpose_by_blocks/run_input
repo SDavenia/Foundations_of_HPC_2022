@@ -12,4 +12,4 @@ do
     ./$f $blk $nrow $ncol
     echo '-------------------------------------'
 
-donels
+done

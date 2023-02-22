@@ -6,7 +6,10 @@ Alternatively you can run them using run_input which also takes blocksize, nrows
 When an `inline` function is called, its body is replaced by the actual program code, 
  so there is no need to jump to the function code at run time (think in assembly).
 
-INITIALIZATION
+These three codes differ in the way the matrices are defined, but in all three cases we have strided 
+ access in write (not optimal one):
+
+`matrix_transpose_blocks.v0.c`
 We allocate matrix as a pointer to pointer 
 
 Using malloc we allocate nrows + ncols pointers to int for both matrix and tmatrix.
@@ -23,9 +26,12 @@ We do the same with tmatrix, but by columns so that each pointer points to the w
 
 Then the matrix is initialized using bitwise operations and the transpose is computed.
 
-`matrix_transpose_blocks.v0.c`
-strided access in write
 
 `matrix_transpose_blocks.v1.c`
 Different matrix initialization, declaring *matrix as an array of int of size ncols.
 Then doing the same for the transpose and initalizing both.
+
+
+`matrix_transpose_blocks.v2.c`
+Different matrix initialization, we have matrix is a pointer to int and then we access it 
+ in a single row way (j + i*ncol) style.
