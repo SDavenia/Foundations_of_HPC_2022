@@ -2,6 +2,14 @@
 #include <chrono>
 #include <vector>
 #include <random>
+/*
+Try to asses time of transpose with strided read/write.
+It appears that when the strided read is used on size 5000 the second version takes approximately less
+
+If you increase to larger values behavious becomes erratic (already at around 6000, and the second one seems to take longer).
+** THIS DOES NOT COMPILE ON ORFEO FOR SOME REASON **
+
+*/
 
 
 class CMatrix{
@@ -34,15 +42,7 @@ public:
 
 int main()
 {
-    CMatrix arr(3, 3);
-    arr.random_fill();
-
-    auto tarr = arr.transpose();
-    arr.print();
-    tarr.print();
-
-    return 0;
-    int nrow{5000}, ncol{5000};
+    int nrow{6000}, ncol{6000};
     
     {CMatrix arr(nrow, ncol);
     arr.random_fill();

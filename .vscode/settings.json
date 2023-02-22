@@ -50,6 +50,10 @@
         "type_traits": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "__split_buffer": "cpp",
+        "cmath": "cpp",
+        "numeric": "cpp",
+        "random": "cpp"
     }
 }
