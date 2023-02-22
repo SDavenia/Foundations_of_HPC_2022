@@ -1,0 +1,15 @@
+echo 'Insert blocksize'
+read blk
+echo 'Insert number of rows'
+read nrow
+echo 'Insert number of columns'
+read ncol
+
+for f in matrix_transpose_blocks.v?.x;
+do
+    echo '-------------------------------------'
+    echo 'running:' $f 
+    ./$f $blk $nrow $ncol
+    echo '-------------------------------------'
+
+donels

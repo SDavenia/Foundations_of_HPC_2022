@@ -47,12 +47,12 @@ inline void transpose ( int mode, idx_t nrows, idx_t ncols, data_t **M, data_t *
     {
     case 0: {
       for ( idx_t i = 0; i < nrows; i++ )
-	for ( idx_t j = 0; j < ncols; j++ )
-	  T[j][i] = M[i][j]; }; break;
+	    for ( idx_t j = 0; j < ncols; j++ )
+	      T[j][i] = M[i][j]; }; break;
     case 1: {
       for ( idx_t i = 0; i < nrows; i++ )
-	for ( idx_t j = 0; j < ncols; j++ )
-	  T[i][j] = M[j][i]; }; break;
+	    for ( idx_t j = 0; j < ncols; j++ )
+	      T[i][j] = M[j][i]; }; break;
     }
   
   return; 
@@ -72,10 +72,12 @@ inline void transpose ( int mode, idx_t nrows, idx_t ncols, data_t **M, data_t *
 int main(int argc, char **argv)
 {
   
-  int block_size = (argc > 1 ? atoi(*(argv+1)) : BLOCKSIZE_DFLT );   // get the numbr of columns
+  int block_size = (argc > 1 ? atoi(*(argv+1)) : BLOCKSIZE_DFLT );   // get the block size
   int nrows      = (argc > 2 ? atoi(*(argv+2)) : ROWS_DFLT );        // get the number of rows
   int ncols      = (argc > 3 ? atoi(*(argv+3)) : COLUMNS_DFLT );     // get the numbr of columns
   int check      = (argc > 4 ? atoi(*(argv+4)) : 0 );                // about cheking the final matrix
+
+  printf("Transposing a matrix of size (%d x %d) with blocks of size %d\n", nrows, ncols, block_size);
 
   if ( (nrows < 1) ||
        (ncols < 1) )
@@ -99,11 +101,11 @@ int main(int argc, char **argv)
   data_t **tmatrix = matrix + nrows;                                       // the transposed matrix
 
   /*
-   * set-up the pointerd that represent the matrix
+   * set-up the pointer that represent the matrix
    */  
   data_t *all      = (data_t*)calloc( 2*nrows*ncols, sizeof(data_t) );
   for ( idx_t i = 0; i < nrows; i++ )
-    matrix[i]  = all + i*ncols;
+    matrix[i]  = all + i*ncols; // Here we initialize the i-th pointer to point to 
   
   for ( idx_t i = 0; i < ncols; i++ )
     tmatrix[i] = all + nrows*ncols + i*nrows;
@@ -131,8 +133,8 @@ int main(int argc, char **argv)
       
       data_t value = (row << half_datat );
       for ( idx_t col = 0; col < ncols; col++ )
-	matrix[row][col] = value | col;
-    }
+	      matrix[row][col] = value | col;
+      }
 	  
   /*
    * transpose the matrix

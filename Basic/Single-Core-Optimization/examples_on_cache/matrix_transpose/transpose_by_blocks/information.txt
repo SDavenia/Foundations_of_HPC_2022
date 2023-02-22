@@ -1,0 +1,31 @@
+You can compile all programs with `compile`, run them with `run` and remove the executables
+ using `clean`.
+
+Alternatively you can run them using run_input which also takes blocksize, nrows and ncols as parameters.
+
+When an `inline` function is called, its body is replaced by the actual program code, 
+ so there is no need to jump to the function code at run time (think in assembly).
+
+INITIALIZATION
+We allocate matrix as a pointer to pointer 
+
+Using malloc we allocate nrows + ncols pointers to int for both matrix and tmatrix.
+matrix will point to the intial one
+tmatrix will point to after the end of matrix
+
+We initialize to 0 a number of memory locations sufficient to hold data for both matrix and tmatrix (all)
+Using calloc we initialize it to 0, and it is a set of pointers to int.
+
+We make matrix[i] (i = 0, ..., ncols) point to the locations in all, so that each 
+ pointer to int (matrix[i]) points to a row of the matrix.
+We use tmatrix to point to the second half of all, where the values of the transpose matrix will be stored
+We do the same with tmatrix, but by columns so that each pointer points to the whole column of the matrix.
+
+Then the matrix is initialized using bitwise operations and the transpose is computed.
+
+`matrix_transpose_blocks.v0.c`
+strided access in write
+
+`matrix_transpose_blocks.v1.c`
+Different matrix initialization, declaring *matrix as an array of int of size ncols.
+Then doing the same for the transpose and initalizing both.

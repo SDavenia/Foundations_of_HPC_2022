@@ -1,0 +1,9 @@
+#!/bin/bash
+for f in matrix_transpose_blocks.v?.x;
+do
+    echo '-------------------------------------'
+    echo 'running:' $f 
+    ./$f 
+    echo '-------------------------------------'
+
+donels
