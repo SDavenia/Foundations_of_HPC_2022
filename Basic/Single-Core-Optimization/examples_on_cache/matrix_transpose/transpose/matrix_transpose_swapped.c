@@ -66,7 +66,8 @@ int main(int argc, char **argv)
   PAPI_INIT;
     
   /* declare an array that is more than twice the L2 cache size */
-  Nmax           = L2WORDS/2;
+  Nmax           = (argc > 1 ? atoi(*(argv +1)) : L2WORDS/2);
+  //Nmax           = L2WORDS/2;
   array          = (double*) malloc(Nmax * Nmax * sizeof(double));
   array_swap     = (double*) malloc(Nmax * Nmax * sizeof(double));
 
@@ -112,6 +113,7 @@ int main(int argc, char **argv)
 	     values[0], values[0]/(2.*NRUNS*N2),
 	     values[1], (double)values[1]/(2.* NRUNS*N2),
 	     values[2], (double)values[2]/(2.* NRUNS*N2));
+      printf("Total time:%d\n", tstop);
 
       if (N < L1WORDS)
 	N*=2;

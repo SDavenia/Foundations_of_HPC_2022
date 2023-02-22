@@ -1,0 +1,9 @@
+#!/bin/bash
+echo 'Insert max size of matrix you want to consider'
+read size
+for f in *.x;
+do
+    echo 'running:' $f 'with max number' $size
+    ./$f $size
+done
+

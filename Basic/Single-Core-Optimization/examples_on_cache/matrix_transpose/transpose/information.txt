@@ -1,0 +1,9 @@
+In this example we show four different codes:
+ - matrix_transpose_swapped : strided access on write
+ - matrix_transpose         : strided access on read
+ - Then same two codes but we also unroll them.
+
+Not very clear how to read this output tbh.
+I added the timing but it seems to be giving the same one over and over in the same way. There must be some kind of mistake somewhere.
+
+For this reasons I rewrote my own code in the folder `my_transpose`, still need to implement and check the unrolling.

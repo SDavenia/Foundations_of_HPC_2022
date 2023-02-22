@@ -1,0 +1,7 @@
+#!/bin/bash
+echo 'Removing all executables'
+for f in *.x;
+do
+    rm $f
+done
+
