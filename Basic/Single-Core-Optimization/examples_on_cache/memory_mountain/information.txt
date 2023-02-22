@@ -1,0 +1,5 @@
+First of all compile using make, remember to do it on each machine as it uses -march=native so need to be specific.
+Execute the gcc code obtained and save the results into the .dat file
+  ./mountain.gcc > mountain.dat
+Execute the .gp file to obtain the plot
+    gnuplot -p plotmountain.gp 
