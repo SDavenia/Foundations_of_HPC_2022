@@ -34,6 +34,14 @@ public:
 
 int main()
 {
+    CMatrix arr(3, 3);
+    arr.random_fill();
+
+    auto tarr = arr.transpose();
+    arr.print();
+    tarr.print();
+
+    return 0;
     int nrow{5000}, ncol{5000};
     
     {CMatrix arr(nrow, ncol);
@@ -69,6 +77,18 @@ void CMatrix::random_fill(){
     /*
     Fills the matrix with random numbers between 0 and 10.
     */
+    std::random_device rnd_device;
+    // Specify the engine and distribution.
+    std::mt19937 mersenne_engine {rnd_device()};  // Generates random integers
+    std::uniform_int_distribution<int> dist {1, 52};
+    
+    auto gen = [&dist, &mersenne_engine](){
+                   return dist(mersenne_engine);
+               };
+
+    
+    std::generate(data.begin(), data.end(), gen);
+    /*
     constexpr auto low_bound = 0;
 	constexpr auto up_bound = 10;
     //take the seed from current time 
@@ -76,6 +96,7 @@ void CMatrix::random_fill(){
     std::default_random_engine dre(seed);//engine
     std::uniform_int_distribution<int> di(low_bound,up_bound);//distribution
     std::generate(data.begin(), data.end(), [&](){ return di(dre);});//fill
+    */
 }
 
 CMatrix CMatrix::transpose_slow(){
