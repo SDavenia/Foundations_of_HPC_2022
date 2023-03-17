@@ -1,0 +1,4 @@
+In this case we have two codes:
+ - pi.c : does not use the if condition, it instead checks through an evaluation of an 
+          expression whether to increase.
+ - pi_conditional.c : uses an if condition to check if there is enough

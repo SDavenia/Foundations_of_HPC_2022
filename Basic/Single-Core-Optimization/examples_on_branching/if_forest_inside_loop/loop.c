@@ -35,6 +35,10 @@
  *   -DSWITCH to compile using a switch construct inside the loop
  *
  * if none is defined, the default is IF_FOREST
+ * Don't get how these are supposed to run, instead use: 0, 1, 2 at compile line to obtain the corresponding one.
+ * 
+ * It appears that the function pointers are the fastest option, followed by the if and the switch taking more or less the same amount of time.
+ * In some cases the switch statement appears to be faster as well.
  */
 
 
@@ -176,7 +180,7 @@ int main(int argc, char **argv)
 
       printf("running with funciton pointer..\n");
       
-      void (*func)(double*, int);
+      void (*func)(double*, int); // This means we have a pointer to function func, where func returns void and takes as input a pointer to double and an int.
       
       if(case1 == 0)
 	{

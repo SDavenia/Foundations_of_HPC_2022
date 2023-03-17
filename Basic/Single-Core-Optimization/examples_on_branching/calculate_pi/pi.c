@@ -58,7 +58,7 @@ int main ( int argc, char **argv )
   srand48(time(NULL));
 
   unsigned long long shot_in = 0;
-  for ( int R = 0; R < ITER; R++ )
+  for ( int R = 0; R < ITER; R++ ) // Repeat this number of times.
     {
       PAPI_FLUSH_BUFFER;
       double tstart = CPU_TIME;      
@@ -66,7 +66,7 @@ int main ( int argc, char **argv )
 
       for ( int shot = 0; shot < N; shot++ )
 	{
-	  double x  = drand48();                      /* draw 2 pseudo-rnd in [0,1]       */
+	  double x  = drand48();                      /* draw 2 pseudo-rnd in [0,1] */
 	  double y  = drand48();
 	  
 	  shot_in += ( (x*x + y*y) < 1.0 );
