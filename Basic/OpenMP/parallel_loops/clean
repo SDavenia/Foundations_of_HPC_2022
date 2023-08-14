@@ -1,0 +1,8 @@
+#!/bin/bash
+pattern_to_match=".x"
+
+for file in *; do
+    if [[ "$file" == *$pattern_to_match* ]]; then
+	    rm $file
+    fi
+done

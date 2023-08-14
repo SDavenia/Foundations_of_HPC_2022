@@ -1,0 +1,14 @@
+#!/bin/bash
+pattern_to_match="array_sum"
+extension=".c"
+
+echo "Compiling the following files"
+for file in *; do
+    if [[ "$file" == *"$pattern_to_match"* && "$file" == *"$extension" ]]; then
+        echo "$file"
+        output_file="${file%.c}"
+
+        gcc -fopenmp "$file" -o "$output_file.x"
+    fi
+done
+
