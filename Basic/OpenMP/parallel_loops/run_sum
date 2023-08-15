@@ -1,0 +1,32 @@
+#!/bin/bash
+pattern_to_match="array_sum"
+extension=".x"
+output_file="timings.txt"
+
+num_threads_arr=(1 2 4 8 16 32 64 128)
+
+#Add all array sizes to the file
+echo "${num_threads_arr[@]}" > $output_file
+
+# Loop over all files
+for file in *; do
+    if [[ "$file" == *"$pattern_to_match"* && "$file" == *"$extension" ]]; then
+        echo "$file"
+
+        echo "$file" >> $output_file
+        
+        # Loop over the powers of 2 you want to use for threading
+        for num_threads in "${num_threads_arr[@]}"; do
+            echo -n " Threads: $num_threads " >> $output_file
+            export OMP_NUM_THREADS=$num_threads
+
+            output=$(./"$file")
+
+            execution_time=$(echo "$output" | awk '/process took/ {print $6}')
+
+            echo "Time: $execution_time" >> $output_file
+	done
+
+        echo "">> $output_file #Add empty line
+    fi
+done

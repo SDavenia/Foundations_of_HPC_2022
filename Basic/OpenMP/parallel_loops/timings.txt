@@ -1,0 +1,51 @@
+1 2 4 8 16 32 64 128
+00_array_sum_with_race.x
+ Threads: 1 Time: 4.76837e-06
+ Threads: 2 Time: 2.86102e-06
+ Threads: 4 Time: 5.24521e-06
+ Threads: 8 Time: 6.67572e-06
+ Threads: 16 Time: 1.21593e-05
+ Threads: 32 Time: 0.000212669
+ Threads: 64 Time: 0.000568628
+ Threads: 128 Time: 0.000811577
+
+01a_array_sum.x
+ Threads: 1 Time: 5.866e-06
+ Threads: 2 Time: 4.093e-06
+ Threads: 4 Time: 5.845e-06
+ Threads: 8 Time: 7.021e-06
+ Threads: 16 Time: 1.365e-05
+ Threads: 32 Time: 0.000192861
+ Threads: 64 Time: 0.000213543
+ Threads: 128 Time: 7.8843e-05
+
+01b_array_sum.x
+ Threads: 1 Time: 1.00136e-05
+ Threads: 2 Time: 7.62939e-06
+ Threads: 4 Time: 2.45571e-05
+ Threads: 8 Time: 1.5974e-05
+ Threads: 16 Time: 2.7895e-05
+ Threads: 32 Time: 0.000371695
+ Threads: 64 Time: 0.000622749
+ Threads: 128 Time: 0.00137043
+
+01c_array_sum.x
+ Threads: 1 Time: 
+ Threads: 2 Time: 
+ Threads: 4 Time: 
+ Threads: 8 Time: 
+ Threads: 16 Time: 
+ Threads: 32 Time: 
+ Threads: 64 Time: 
+ Threads: 128 Time: 
+
+01d_array_sum.x
+ Threads: 1 Time: 5.72205e-06
+ Threads: 2 Time: 5.00679e-06
+ Threads: 4 Time: 9.05991e-06
+ Threads: 8 Time: 8.34465e-06
+ Threads: 16 Time: 1.52588e-05
+ Threads: 32 Time: 0.000354767
+ Threads: 64 Time: 0.000717878
+ Threads: 128 Time: 0.00123787
+
