@@ -1,0 +1,6 @@
+To compare the run-time of the various codes.
+To be precise 00 and 01c should not be considered but all the others yes.
+
+- clean removes all executables
+- compile_sum compiles all the codes
+- run_sum executes the code with various number of threads and collects the results in the file timings.txt
