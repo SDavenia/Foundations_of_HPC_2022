@@ -7,6 +7,8 @@
 *.o
 *.so
 *.x
+*.out
+
 
 # Packages #
 ############
@@ -36,3 +38,4 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+Basic/.DS_Store
