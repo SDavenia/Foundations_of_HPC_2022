@@ -7,10 +7,31 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include <time.h>
+
 /*
 Code to obtain the Mandelbrot set in the interval delimited by bottom left corner (-1.5, -1) and right corner (0.5, 1).
 The code takes as command-line arguments nrow, ncol, Imax
 */
+
+
+#if defined(_OPENMP)
+#define CPU_TIME ({struct  timespec ts; clock_gettime( CLOCK_REALTIME, &ts ),\
+					  (double)ts.tv_sec +		\
+					  (double)ts.tv_nsec * 1e-9;})
+
+#define CPU_TIME_th ({struct  timespec myts; clock_gettime( CLOCK_THREAD_CPUTIME_ID, &myts ),\
+					     (double)myts.tv_sec +	\
+					     (double)myts.tv_nsec * 1e-9;})
+#else
+
+#define CPU_TIME ({struct  timespec ts; clock_gettime( CLOCK_PROCESS_CPUTIME_ID, &ts ),\
+					  (double)ts.tv_sec +		\
+					  (double)ts.tv_nsec * 1e-9;})
+
+#endif
+
+
 
 int main(int argc, char* argv[])
 {
@@ -44,6 +65,7 @@ int main(int argc, char* argv[])
     double dx = (xR - xL)/(double)nrow;
     double dy = (yR - yL)/(double)ncol;
 
+    double tstart      = CPU_TIME;                         // take the time for th 0
     // Compute for all the entries in the matrix
     for(int i = 0; i <= nrow; i++){
         for(int j = 0; j <= ncol; j++){
@@ -78,8 +100,9 @@ int main(int argc, char* argv[])
             ptr[i + ncol*j] = value;
         }
     }
-
-
+    double tend      = CPU_TIME;     
+    printf("Process took %g of wall-clock time\n", tend - tstart );
+/*
     printf("Printing matrix of points in the set\n");
     
     for(int i = 0; i <=nrow; i++){
@@ -88,8 +111,9 @@ int main(int argc, char* argv[])
         }
         printf("\n");
     }    
-    free(ptr);  
+*/
 
+    free(ptr);  
 
 }
 
