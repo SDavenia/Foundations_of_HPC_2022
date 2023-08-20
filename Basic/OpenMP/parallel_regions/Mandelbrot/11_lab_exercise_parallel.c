@@ -82,7 +82,7 @@ int main(int argc, char* argv[])
         for(int i = 0; i <= nrow; i++){
             for(int j = 0; j <= ncol; j++){
 
-                printf("i = %d, j= %d, threadId = %d \n", i, j, omp_get_thread_num());
+                //printf("i = %d, j= %d, threadId = %d \n", i, j, omp_get_thread_num());
 
 
                 double c_real = xL + dx * j; 
